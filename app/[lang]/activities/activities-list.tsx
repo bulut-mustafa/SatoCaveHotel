@@ -14,9 +14,9 @@ export function ActivitiesList({ dict }: { dict: any }) {
     const activities = [
         { id: 'hot_air_balloons', data: dict.hot_air_balloons, video: '/videos/compressed/hot-air-balloon.mp4', poster: dict.hot_air_balloons.image_url },
         { id: 'horseback_riding', data: dict.horseback_riding, video: '/videos/compressed/horse.mp4', poster: dict.horseback_riding.image_url },
-        { id: 'green_tour', data: dict.green_tour, image: '/images/greentour-ihlara.jpg' },
-        { id: 'red_tour', data: dict.red_tour, video: '/videos/compressed/uchisar-castle.mp4', poster: '/images/uchisar-castle.jpg', image: '/images/uchisar-castle.jpg' },
-        { id: 'underground_cities', data: dict.underground_cities, image: '/images/greentour-derinkuyu.jpg' },
+        { id: 'green_tour', data: dict.green_tour, image: '/images/greentour-ihlara.webp' },
+        { id: 'red_tour', data: dict.red_tour, video: '/videos/compressed/uchisar-castle.mp4', poster: '/images/uchisar-castle.webp', image: '/images/uchisar-castle.webp' },
+        { id: 'underground_cities', data: dict.underground_cities, image: '/images/greentour-derinkuyu.webp' },
     ]
 
     return (
