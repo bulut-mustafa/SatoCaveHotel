@@ -17,15 +17,15 @@ export default async function RoomsPage({
     <main>
       <Header dict={dict.header} lang={lang} />
 
-      <section className="bg-hero-bg px-6 pt-32 pb-16 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <p className="mb-4 text-sm tracking-[0.3em] text-hero-overlay/70 uppercase">
+      <section className="bg-background px-6 pt-32 pb-8 lg:px-8 border-b border-border">
+        <div className="mx-auto max-w-7xl text-center py-12">
+          <p className="mb-6 text-sm md:text-xs tracking-[0.3em] text-muted-foreground uppercase">
             {dict.rooms_page.subtitle}
           </p>
-          <h1 className="font-serif text-4xl font-bold text-hero-overlay md:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-5xl md:text-6xl text-foreground font-normal tracking-wide">
             {dict.rooms_page.title}
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-hero-overlay/80">
+          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
             {dict.rooms_page.description}
           </p>
         </div>

@@ -17,6 +17,13 @@ interface GoogleReview {
   profile_photo_url: string
 }
 
+const PLACE_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || process.env.GOOGLE_PLACE_ID
+
+const reviewUrl = PLACE_ID
+  ? `https://search.google.com/local/writereview?placeid=${PLACE_ID}`
+  : "#"
+
 async function getGoogleReviews(): Promise<Review[]> {
   const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY || process.env.GOOGLE_API_KEY
   const PLACE_ID = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || process.env.GOOGLE_PLACE_ID
@@ -127,7 +134,7 @@ export async function ReviewsSection({ dict }: { dict: any }) {
 
         <div className="mt-12 flex items-center justify-center">
           <a
-            href="https://g.page/r/YOUR_GOOGLE_PLACE_ID/review"
+            href={reviewUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-full bg-foreground px-8 py-3 text-sm font-semibold text-background transition-colors hover:bg-foreground/90"

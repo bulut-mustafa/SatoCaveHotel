@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { MapPin, Phone, Mail } from "lucide-react"
 
 export function Footer({ dict, lang }: { dict: any; lang: string }) {
@@ -9,14 +10,16 @@ export function Footer({ dict, lang }: { dict: any; lang: string }) {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-wider">
-                SATO
-              </span>
-              <span className="text-[10px] tracking-[0.3em] text-primary-foreground/70 uppercase">
-                Cave Hotel
-              </span>
-            </div>
+            <Link href={`/${lang}`} className="flex flex-col">
+              <Image
+                src="/Sato-logo-transparent.png"
+                alt="Sato Cave Hotel Logo"
+                width={150}
+                height={75}
+                className="object-contain h-16 w-auto brightness-0 invert"
+                priority
+              />
+            </Link>
             <p className="text-sm leading-relaxed text-primary-foreground/70">
               {dict.description}
             </p>

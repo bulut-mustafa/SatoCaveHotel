@@ -10,7 +10,7 @@ export function HeroSection({ dict }: { dict: any }) {
       {/* FULL SCREEN BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/cappadocia-hero-2.jpg"
+          src="/images/terrace-breakfast.jpg"
           alt="Sato Cave Hotel Exterior"
           fill
           className="object-cover object-center"

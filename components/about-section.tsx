@@ -14,14 +14,14 @@ export function AboutSection({ dict }: { dict: any }) {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div className="px-6 lg:px-0">
-            <p className="mb-4 text-xs tracking-[0.3em] text-muted-foreground uppercase">
+            <p className="mb-4 text-xs tracking-[0.3em] text-foreground/50 uppercase">
               {dict.subtitle}
             </p>
             <h2 className="font-serif text-3xl font-bold leading-snug text-foreground md:text-4xl lg:text-5xl text-balance">
               {dict.title_part_1}
-              <span className="text-accent">{dict.title_part_2}</span>
+              <span className="text-foreground/70 italic">{dict.title_part_2}</span>
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base leading-relaxed text-foreground/65">
               {dict.description}
             </p>
 
@@ -31,7 +31,7 @@ export function AboutSection({ dict }: { dict: any }) {
                   <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border">
                     <feature.icon className="h-6 w-6 text-foreground" />
                   </div>
-                  <span className="text-center text-xs font-medium tracking-wide text-foreground">
+                  <span className="text-center text-xs font-semibold tracking-wide text-foreground/80">
                     {feature.label}
                   </span>
                 </div>

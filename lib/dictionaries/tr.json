@@ -7,6 +7,7 @@
     "nav_breakfast": "Kahvaltı",
     "nav_reviews": "Yorumlar",
     "nav_location": "Konum",
+    "nav_activities": "Aktiviteler",
     "book_now": "Hemen Rezervasyon"
   },
   "hero": {
@@ -143,5 +144,50 @@
     "about_experience": "Deneyim Hakkında",
     "in_room_amenities": "Oda İçi Olanaklar",
     "night": "gece"
+  },
+  "activities": {
+    "title_line_1": "Kapadokya'nın Harikalarını",
+    "title_line_2": "Keşfedin",
+    "description": "Hemen kapımızın önünde unutulmaz deneyimler ve maceralar keşfedin.",
+    "see_all_activities": "Tüm Aktiviteleri Gör",
+    "hot_air_balloons": {
+      "title": "Sıcak Hava Balonları",
+      "short_text": "Gündoğumunda peribacalarının üzerinde uçun.",
+      "description": "Kapadokya'nın büyüsünü yukarıdan deneyimleyin. Güneş doğarken ve gökyüzünü canlı renklere boyarken peribacalarının ve volkanik kaya oluşumlarının çarpıcı manzarasının üzerinde huzurla süzülün.",
+      "image_url": "https://images.unsplash.com/photo-1527668752968-14ce70a6c766?q=80&w=2670&auto=format&fit=crop"
+    },
+    "horseback_riding": {
+      "title": "At Binme",
+      "short_text": "Güzel vadilerde ata binin.",
+      "description": "'Güzel Atlar Diyarı' olarak bilinen Kapadokya, binicilik için mükemmeldir. Rehberli bir gün batımı veya gün doğumu turunda gizli patikaları, yemyeşil vadileri ve antik kaya oluşumlarını keşfedin.",
+      "image_url": "https://images.unsplash.com/photo-1601053155169-d4da7c68ba09?q=80&w=2670&auto=format&fit=crop"
+    },
+    "green_tour": {
+      "title": "Yeşil Tur (Güney Kapadokya)",
+      "short_text": "Yeraltı şehirlerini ve Ihlara Vadisi'ni keşfedin.",
+      "description": "Kapadokya'nın güney kısmında kapsamlı bir tam gün yolculuğu. Çarpıcı Ihlara Vadisi'nde yürüyüş yapın, devasa Derinkuyu Yeraltı Şehri'ni ziyaret edin ve Selime Manastırı'nı keşfedin.",
+      "image_url": "https://images.unsplash.com/photo-1707577519126-dfbacdd945f3?q=80&w=2670&auto=format&fit=crop"
+    },
+    "red_tour": {
+      "title": "Kırmızı Tur (Kuzey Kapadokya)",
+      "short_text": "İkonik peribacalarını ve açık hava müzelerini keşfedin.",
+      "description": "Klasik Kapadokya deneyimi. Ünlü Göreme Açık Hava Müzesi'ni ziyaret edin, Devrent ve Paşabağı Vadilerindeki eşsiz kaya oluşumlarına hayran kalın ve Avanos'ta geleneksel çömlek yapımına tanık olun.",
+      "image_url": "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?q=80&w=2574&auto=format&fit=crop"
+    },
+    "pottery_making": {
+      "title": "Avanos'ta Çömlek Yapımı",
+      "short_text": "Kendi kil şaheserinizi yaratın.",
+      "description": "Avanos, Hititlere kadar uzanan çömlekçilik gelenekleriyle ünlüdür. Yerel bir atölyeyi ziyaret edin, usta zanaatkarların Kızılırmak'tan gelen kırmızı kili şekillendirmesini izleyin ve kendi parçanızı yapmayı deneyin.",
+      "image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=2670&auto=format&fit=crop"
+    },
+    "underground_cities": {
+      "title": "Yeraltı Şehirleri",
+      "short_text": "Antik yeraltı dünyalarının derinliklerine yolculuk.",
+      "description": "Kaymaklı veya Derinkuyu gibi inanılmaz çok katlı yeraltı şehirlerine inin. İlk Hıristiyanlar tarafından inşa edilen tünellerin, gizli odaların, şaraphanelerin ve havalandırma boşluklarının karmaşık labirentlerini keşfedin.",
+      "image_url": "https://images.unsplash.com/photo-1442129524672-1c2ce0c131ed?q=80&w=2676&auto=format&fit=crop"
+    },
+    "details_button": "Detaylar",
+    "book_activity": "Rezervasyon İste",
+    "close": "Kapat"
   }
 }

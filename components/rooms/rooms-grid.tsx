@@ -17,43 +17,61 @@ export function RoomsGrid({ dict, rooms }: { dict: any; rooms: Room[] }) {
     return (
         <>
             <section className="bg-background px-6 py-20 lg:px-8">
-                <div className="mx-auto max-w-7xl">
-                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {rooms.map((room) => (
-                            <button
-                                key={room.id}
-                                onClick={() => openRoom(room)}
-                                className="group flex flex-col overflow-hidden border border-border bg-card text-left transition-all hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-                            >
-                                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                                    <Image
-                                        src={room.image}
-                                        alt={room.name}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
-                                <div className="flex flex-1 w-full flex-col gap-2 p-5">
-                                    <h2 className="font-serif text-lg font-semibold text-card-foreground">
-                                        {room.name}
-                                    </h2>
-                                    <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">
-                                        {room.tagline}
-                                    </p>
-                                    <div className="mt-auto flex w-full items-center justify-between pt-3">
-                                        <p className="text-sm font-semibold text-accent">
-                                            {dict.rooms?.from + " \u20AC"}{room.price}
-                                            <span className="font-normal text-muted-foreground">
-                                                {" "}/ {dict.rooms?.night}
-                                            </span>
-                                        </p>
-                                        <span className="text-xs font-medium text-accent transition-colors group-hover:text-accent/80">
-                                            {dict.rooms_page.view_details}
-                                        </span>
+                <div className="mx-auto max-w-6xl">
+                    <div className="flex flex-col gap-24 md:gap-32">
+                        {rooms.map((room, index) => {
+                            const isEven = index % 2 === 0;
+
+                            return (
+                                <div
+                                    key={room.id}
+                                    className={`flex flex-col gap-8 lg:gap-16 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center`}
+                                >
+
+                                    {/* TEXT BLOCK */}
+                                    <div className="flex-1 w-full flex flex-col justify-center">
+                                        <div className={`max-w-md ${isEven ? 'mr-auto lg:pr-8' : 'ml-auto lg:pl-8'}`}>
+
+                                            <div className="flex items-center gap-4 mb-4 text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+                                                <span>{room.bedType}</span>
+                                                <span className="text-border/60">•</span>
+                                                <span>{dict.rooms?.from} €{room.price}</span>
+                                            </div>
+
+                                            <h2 className="font-serif text-4xl lg:text-5xl font-normal text-foreground leading-[1.1] mb-6">
+                                                {room.name}
+                                            </h2>
+
+                                            <p className="text-base leading-relaxed text-muted-foreground mb-8">
+                                                {room.description}
+                                            </p>
+
+                                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-8">
+                                                <button
+                                                    onClick={() => openRoom(room)}
+                                                    className="bg-foreground hover:bg-foreground/80 text-background px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
+                                                >
+                                                    {dict.rooms_page?.view_details || 'View Details'}
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    {/* IMAGE BLOCK */}
+                                    <div className="flex-1 w-full relative">
+                                        <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm lg:aspect-[3/2] bg-muted">
+                                            <Image
+                                                src={room.image}
+                                                alt={room.name}
+                                                fill
+                                                className="object-cover transition-transform duration-700 hover:scale-105"
+                                            />
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </button>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
             </section>

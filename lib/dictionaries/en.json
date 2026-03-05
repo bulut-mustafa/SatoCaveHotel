@@ -7,6 +7,7 @@
     "nav_breakfast": "Breakfast",
     "nav_reviews": "Reviews",
     "nav_location": "Location",
+    "nav_activities": "Activities",
     "book_now": "Book Now"
   },
   "hero": {
@@ -143,5 +144,50 @@
     "about_experience": "About the Experience",
     "in_room_amenities": "In-Room Amenities",
     "night": "night"
+  },
+  "activities": {
+    "title_line_1": "Explore the Wonders",
+    "title_line_2": "of Cappadocia",
+    "description": "Discover unforgettable experiences and adventures right at our doorstep.",
+    "see_all_activities": "See All Activities",
+    "hot_air_balloons": {
+      "title": "Hot Air Balloons",
+      "short_text": "Fly over fairy chimneys at sunrise.",
+      "description": "Experience the magic of Cappadocia from above. Drift peacefully over the stunning  landscape of fairy chimneys and volcanic rock formations as the sun rises, painting the sky in vibrant colors.",
+      "image_url": "https://images.unsplash.com/photo-1527668752968-14ce70a6c766?q=80&w=2670&auto=format&fit=crop"
+    },
+    "horseback_riding": {
+      "title": "Horseback Riding",
+      "short_text": "Ride through the beautiful valleys.",
+      "description": "Known as the 'Land of Beautiful Horses', Cappadocia is perfect for horseback riding. Explore the hidden trails, lush valleys, and ancient rock formations on a guided sunset or sunrise tour.",
+      "image_url": "https://images.unsplash.com/photo-1601053155169-d4da7c68ba09?q=80&w=2670&auto=format&fit=crop"
+    },
+    "green_tour": {
+      "title": "Green Tour",
+      "short_text": "Discover the underground cities and Ihlara Valley.",
+      "description": "A comprehensive whole-day journey through the southern part of Cappadocia. Hike through the stunning Ihlara Valley, visit the massive Derinkuyu Underground City, and explore the Selime Monastery.",
+      "image_url": "https://images.unsplash.com/photo-1707577519126-dfbacdd945f3?q=80&w=2670&auto=format&fit=crop"
+    },
+    "red_tour": {
+      "title": "Red Tour",
+      "short_text": "Explore iconic fairy chimneys and open-air museums.",
+      "description": "The classic Cappadocian experience. Visit the famous Goreme Open Air Museum, marvel at the unique rock formations in Devrent and Pasabag Valleys, and witness traditional pottery making in Avanos.",
+      "image_url": "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?q=80&w=2574&auto=format&fit=crop"
+    },
+    "pottery_making": {
+      "title": "Pottery Making in Avanos",
+      "short_text": "Create your own clay masterpiece.",
+      "description": "Avanos is famous for its pottery traditions dating back to the Hittites. Visit a local workshop, watch master artisans shape the red clay from the Kizilirmak River, and try making your own piece.",
+      "image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=2670&auto=format&fit=crop"
+    },
+    "underground_cities": {
+      "title": "Underground Cities",
+      "short_text": "Journey deep into ancient subterranean worlds.",
+      "description": "Descend into the incredible multi-level underground cities like Kaymakli or Derinkuyu. Explore the intricate labyrinths of tunnels, hidden rooms, wineries, and ventilation shafts built by early Christians.",
+      "image_url": "https://images.unsplash.com/photo-1442129524672-1c2ce0c131ed?q=80&w=2676&auto=format&fit=crop"
+    },
+    "details_button": "Details",
+    "book_activity": "Request Booking",
+    "close": "Close"
   }
 }
