@@ -82,59 +82,200 @@
   "room_details": {
     "white-stone-room-bathtub": {
       "name": "White Stone Room with Bathtub",
-      "tagline": "Minimalist elegance meets the timeless architecture of ancient vaulted ceilings",
-      "description": "White Stone Room posesses a minimal style that contrasts with the ancient architecture of vaulted ceilings and stone walls that are typical of the region.",
-      "amenities": ["Private Bathtub", "Private Bathroom", "Central Heating", "Free Wi-Fi", "Hair Dryer", "Towels & Linens", "Daily Housekeeping", "In-Room Safe", "Turkish Tea Set"],
-      "highlights": ["Authentic vaulted stone architecture", "Minimalist design aesthetic", "Relaxing in-room bathtub", "Natural climate control"]
+      "tagline": "Minimalist elegance within authentic Cappadocian stone architecture",
+      "description": "The White Stone Room combines minimalist design with the timeless beauty of traditional Cappadocian stone walls and vaulted ceilings, creating a peaceful and refined atmosphere.",
+      "amenities": [
+        "Private Bathtub",
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping"
+      ],
+      "highlights": [
+        "Authentic vaulted stone architecture",
+        "Minimalist interior design",
+        "Relaxing bathtub",
+        "Natural cave ambiance"
+      ]
     },
+
     "arena-stone-room-bathtub": {
       "name": "Arena Stone Room with Bathtub",
-      "tagline": "A mystical and romantic retreat surrounded by soft, organic textures",
-      "description": "With its mystical and romantic style, Arena Stone Room will surprise you as soon as you enter, offering a warm and soft atmosphere surrounded by organic textures and details.",
-      "amenities": ["Private Bathtub", "Private Bathroom", "Central Heating", "Free Wi-Fi", "Hair Dryer", "Towels & Linens", "Daily Housekeeping", "Reading Lamp", "Wardrobe"],
-      "highlights": ["Mystical and romantic ambiance", "Hand-finished organic wall textures", "Warm, ambient lighting design", "In-room bath for ultimate relaxation"]
+      "tagline": "A romantic stone retreat with warm textures and soft lighting",
+      "description": "The Arena Stone Room welcomes guests with a warm and romantic atmosphere, combining organic textures and soft tones within traditional Cappadocian stone architecture.",
+      "amenities": [
+        "Private Bathtub",
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping"
+      ],
+      "highlights": [
+        "Romantic and cozy atmosphere",
+        "Natural stone textures",
+        "Private in-room bathtub",
+        "Authentic Cappadocian design"
+      ]
     },
+
     "cooper-cave": {
       "name": "Cooper Cave",
-      "tagline": "A masterpiece of restoration featuring hand-carved historical walls",
-      "description": "The unique and indispensible part of this room is the product of a meticulous restoration work. Original and historical walls carved by hand accompanied by harmonious colors and eloborate decoration.",
-      "amenities": ["Sitting Area", "Private Bathroom", "Rain Shower", "Central Heating", "Free Wi-Fi", "Mini Fridge", "Work Desk", "Turkish Kilim Rug", "Bathrobes", "Complimentary Fruit"],
-      "highlights": ["Meticulously restored hand-carved walls", "Spacious living and sleeping areas", "Harmonious traditional color palette", "Authentic Cappadocian craftsmanship"]
+      "tagline": "A beautifully restored cave room with authentic handcrafted walls",
+      "description": "Cooper Cave features carefully restored hand-carved stone walls that reflect the historic character of Cappadocia, complemented by warm tones and traditional decorative elements.",
+      "amenities": [
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping"
+      ],
+      "highlights": [
+        "Hand-carved historic cave walls",
+        "Warm traditional color palette",
+        "Authentic Cappadocian craftsmanship",
+        "Comfortable cave living experience"
+      ]
     },
+
     "olive-cave": {
       "name": "Olive Cave",
-      "tagline": "A daring yet simple atmosphere designed for an intimate grotto experience",
-      "description": "A fresh but daring atmosphere, which will allow you to live an intimate experience. With a perfect balance between simplicity and textures and special small details.",
-      "amenities": ["Private Bathroom", "String Light Ambiance", "Central Heating", "Free Wi-Fi", "Turkish Ceramics", "Premium Linens", "Hair Dryer", "Romantic Turndown Service"],
-      "highlights": ["Fresh and daring interior design", "Intimate cave-dwelling atmosphere", "Thoughtful small artisanal details", "Perfect for romantic getaways"]
+      "tagline": "A cozy and intimate cave retreat with natural charm",
+      "description": "Olive Cave offers a comfortable and intimate cave experience, combining simplicity, natural textures, and thoughtful details that reflect the unique character of Cappadocia.",
+      "amenities": [
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping"
+      ],
+      "highlights": [
+        "Intimate cave atmosphere",
+        "Soft natural textures",
+        "Authentic stone surroundings",
+        "Perfect for a peaceful stay"
+      ]
     },
+
     "black-stone-room-bathtub": {
       "name": "Black Stone Room with Bathtub",
-      "tagline": "Journey through a private tunnel to your own stylish chateau-inspired sanctuary",
-      "description": "Black Stone Room is located at the end of a tunnel which will make you feel like you are in a true 'chateau'. Romance is the first thing you think of when entering this original, stylish room.",
-      "amenities": ["Private Bathtub", "Private Bathroom", "Sitting Area", "Central Heating", "Free Wi-Fi", "Pendant Lighting", "Work Desk", "Mini Fridge", "Complimentary Water", "Hairdryer"],
-      "highlights": ["Unique private tunnel entrance", "Sophisticated 'chateau' atmosphere", "Premium in-room bathtub", "Ideal for romantic celebrations"]
+      "tagline": "A stylish stone sanctuary reached through a private tunnel",
+      "description": "Located at the end of a unique stone tunnel, the Black Stone Room offers a romantic and stylish atmosphere with authentic cave character and a relaxing private bathtub.",
+      "amenities": [
+        "Private Bathtub",
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping",
+        "Village View"
+      ],
+      "highlights": [
+        "Unique tunnel entrance",
+        "Elegant cave atmosphere",
+        "Private in-room bathtub",
+        "Beautiful village view"
+      ]
     },
+
     "moon-cave": {
       "name": "Moon Cave",
-      "tagline": "Dreamy tones and seductive colors in the deepest heart of the hotel",
-      "description": "Designed with its own distinctive character, carefully preserved to make you feel in a different world. With dreamy taste and seductive colors, it will be a privilege to spend time in the deepest heart of Sato Cave Hotel.",
-      "amenities": ["Private Bathroom", "Central Heating", "Free Wi-Fi", "Village View", "Hair Dryer", "Towels & Linens", "Daily Housekeeping", "Vintage Furniture"],
-      "highlights": ["Immersive deep-cave experience", "Seductive and unique color palette", "Secluded and quiet atmosphere", "Preserved historical character"]
+      "tagline": "A peaceful cave hideaway with dreamy tones and unique character",
+      "description": "Moon Cave is designed with its own distinctive character, offering a calm and immersive cave experience in the quiet heart of the hotel.",
+      "amenities": [
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping"
+      ],
+      "highlights": [
+        "Deep cave ambiance",
+        "Quiet and secluded atmosphere",
+        "Unique color palette",
+        "Authentic preserved character"
+      ]
     },
+
     "amber-cave": {
       "name": "Amber Cave",
-      "tagline": "A synthesis of centuries of history with rich textiles and exclusive comfort",
-      "description": "The perfect synthesis of rich decoration and tradition, providing beautiful textile furniture and large areas to provide you with al the comfort and exclusivity that has been collected in a space with centuries of history.",
-      "amenities": ["Private Bathroom", "Central Heating", "Free Wi-Fi", "Writing Desk", "Village View", "Flexible Bed Config", "Kilim Textiles", "Daily Housekeeping"],
-      "highlights": ["Rich traditional Turkish textiles", "Centuries-old historical space", "Versatile sleeping arrangements", "Unparalleled comfort and exclusivity"]
+      "tagline": "A spacious cave room blending history with traditional textures",
+      "description": "Amber Cave combines traditional Turkish decorative elements with the historic character of a centuries-old cave space, offering comfort and authenticity in equal measure.",
+      "amenities": [
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping",
+        "Reading Lamp"
+      ],
+      "highlights": [
+        "Rich traditional textile accents",
+        "Historic cave setting",
+        "Comfortable spacious layout",
+        "Quiet reading corner"
+      ]
     },
+
     "almond-cave-bathtub": {
       "name": "Almond Cave with Bathtub",
-      "tagline": "A remote natural refuge featuring a luxurious private jacuzzi",
-      "description": "A natural refuge, providing you with luxury and intimacy, enabling you to relax for hours in the jacuzzi located inside the most remote cave that the Sato has.",
-      "amenities": ["In-room Jacuzzi/Bathtub", "Private Bathroom", "Central Heating", "Free Wi-Fi", "Valley View", "Copper Lighting", "Ornate Headboard", "Hair Dryer"],
-      "highlights": ["Private indoor jacuzzi bathtub", "The hotel's most remote and private cave", "Stunning valley views", "Authentic natural stone refuge"]
+      "tagline": "A private cave retreat designed for relaxation",
+      "description": "Almond Cave offers a peaceful and intimate cave setting where guests can relax in a private bathtub surrounded by the natural stone textures of Cappadocia.",
+      "amenities": [
+        "Private Bathtub",
+        "Private Bathroom",
+        "Rain Shower",
+        "Sitting Area",
+        "Central Heating",
+        "Free Wi-Fi",
+        "Tea & Coffee Set",
+        "Complimentary Water",
+        "Hair Dryer",
+        "Towels & Linens",
+        "Daily Housekeeping"
+      ],
+      "highlights": [
+        "Private in-room bathtub",
+        "Quiet and secluded cave atmosphere",
+        "Natural stone surroundings",
+        "Perfect for relaxation"
+      ]
     }
   },
   "room_modal": {

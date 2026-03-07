@@ -41,7 +41,7 @@ export default async function RootLayout({
     <html lang={lang}>
       <body className="font-sans antialiased">
         {children}
-        <WhatsAppButton />
+        <WhatsAppButton lang={lang}/>
         <Analytics />
       </body>
     </html>

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { MessageCircle } from "lucide-react"
 
 export function WhatsAppButton({ lang = "en" }: { lang?: string }) {
-  const phone = "905465008775"
+  const phone = "905451057999"
 
   const messages: any = {
     en: "Hello! I would like to ask about room availability.",
