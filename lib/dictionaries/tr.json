@@ -12,25 +12,25 @@
   },
   "hero": {
     "location": "Göreme, Kapadokya",
-    "title_line_1": "Konforlu Odanızı",
-    "title_line_2_a": "Bugün",
-    "title_line_2_b": "Ayırtın!",
-    "description": "Maceraya Hazır Olun! Yerinizi Şimdi Ayırtın ve Yolculuğunuza Çıkın!",
+    "title_line_1": "Kapadokya'da Otantik Mağara Yaşamı",
+    "title_line_2_a": "Konaklamanızı",
+    "title_line_2_b": "Bugün Ayırtın",
+    "description": "Tarihi mağara odaları, büyüleyici teras manzarası ve Göreme'nin kalbinde sıcak bir aile misafirperverliği.",
     "cta": "Rezervasyon",
     "tag_1": "Büyüleyici",
     "tag_2": "Eşsiz",
-    "tag_3": "Yenileyici"
+    "tag_3": "Huzur Verici"
   },
   "about": {
     "subtitle": "Şato Cave Hotel",
-    "title_part_1": "Göreme'nin kalbinde tarihi bir Rum evi ve ",
-    "title_part_2": "kaya oyma otel.",
-    "description": "Yüzyıllar boyunca Kapadokya'nın volkanik tüf kayalarına oyulmuş olan Şato Cave Hotel, otantik mağara odaları, orijinal Rum taş mimarisini ve modern konforu harmanlayan, sevgiyle restore edilmiş tarihi bir mülktür. Panoramik terasımızdan peribacalarının üzerinde süzülen sıcak hava balonları manzarasıyla her sabaha uyanın ve güne geleneksel serpme kahvaltı ile başlayın.",
+    "title_part_1": "Göreme'nin kalbinde yer alan otantik bir mağara oteli; konforlu odaları, sıcak misafirperverliği ve unutulmaz",
+    "title_part_2": "Kapadokya manzaraları sunar.",
+    "description": "Yüzyıllar boyunca Kapadokya'nın volkanik tüf kayalarına oyularak oluşan Şato Cave Hotel, otantik mağara odalarını modern konforla birleştiren özenle restore edilmiş tarihi bir yapıdır. Panoramik terasımızdan peribacalarının üzerinde süzülen sıcak hava balonlarını izleyerek güne uyanın ve geleneksel Türk kahvaltısıyla güne başlayın.",
     "features": {
       "fairy_chimneys": "Peribacaları",
       "balloon_views": "Balon Manzarası",
-      "cave_rooms": "Mağara Odalar",
-      "turkish_breakfast": "Serpme Kahvaltı"
+      "cave_rooms": "Mağara Odaları",
+      "turkish_breakfast": "Türk Kahvaltısı"
     }
   },
   "rooms": {
@@ -84,57 +84,175 @@
       "name": "White Stone Room with Bathtub",
       "tagline": "Minimalist şıklık, antik tonozlu tavanların zamansız mimarisiyle buluşuyor",
       "description": "Beyaz Taş Oda, bölgeye özgü tonozlu tavanların ve taş duvarların antik mimarisiyle kontrast oluşturan minimal bir tarza sahiptir.",
-      "amenities": ["Özel Küvet", "Özel Banyo", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Saç Kurutma Makinesi", "Havlu ve Nevresim", "Günlük Temizlik", "Oda İçi Kasa", "Türk Çayı Seti"],
-      "highlights": ["Otantik tonozlu taş mimari", "Minimalist tasarım estetiği", "Rahatlatıcı oda içi küvet", "Doğal iklim kontrolü"]
+      "amenities": [
+        "Özel Küvet",
+        "Özel Banyo",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Saç Kurutma Makinesi",
+        "Havlu ve Nevresim",
+        "Günlük Temizlik",
+        "Oda İçi Kasa",
+        "Türk Çayı Seti"
+      ],
+      "highlights": [
+        "Otantik tonozlu taş mimari",
+        "Minimalist tasarım estetiği",
+        "Rahatlatıcı oda içi küvet",
+        "Doğal iklim kontrolü"
+      ]
     },
     "arena-stone-room-bathtub": {
       "name": "Arena Stone Room with Bathtub",
       "tagline": "Yumuşak, organik dokularla çevrili mistik ve romantik bir sığınak",
       "description": "Mistik ve romantik tarzıyla gizemli ve romantik bir havaya sahip olan Arena Taş Oda, içeri girdiğiniz andan itibaren organik dokular ve detaylarla çevrili sıcak ve yumuşak bir atmosfer sunarak sizi şaşırtacak.",
-      "amenities": ["Özel Küvet", "Özel Banyo", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Saç Kurutma Makinesi", "Havlu ve Nevresim", "Günlük Temizlik", "Okuma Lambası", "Gardırop"],
-      "highlights": ["Mistik ve romantik ambiyans", "El yapımı organik duvar dokuları", "Sıcak, ortam aydınlatma tasarımı", "Nihai rahatlama için oda içi küvet"]
+      "amenities": [
+        "Özel Küvet",
+        "Özel Banyo",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Saç Kurutma Makinesi",
+        "Havlu ve Nevresim",
+        "Günlük Temizlik",
+        "Okuma Lambası",
+        "Gardırop"
+      ],
+      "highlights": [
+        "Mistik ve romantik ambiyans",
+        "El yapımı organik duvar dokuları",
+        "Sıcak, ortam aydınlatma tasarımı",
+        "Nihai rahatlama için oda içi küvet"
+      ]
     },
     "cooper-cave": {
       "name": "Cooper Cave",
       "tagline": "El oyması tarihi duvarlara sahip bir restorasyon şaheseri",
       "description": "Bu odanın özgün ve vazgeçilmez kısmı, titiz bir restorasyon çalışmasının ürünüdür. Uyumlu renkler ve ayrıntılı dekorasyonun eşlik ettiği el oyması orijinal ve tarihi duvarlar.",
-      "amenities": ["Oturma Alanı", "Özel Banyo", "Yağmur Duşu", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Mini Buzdolabı", "Çalışma Masası", "Türk Kilim Dokuması", "Bornoz", "İkram Meyve"],
-      "highlights": ["Titizlikle restore edilmiş el oyması duvarlar", "Geniş yaşam ve uyuma alanları", "Uyumlu geleneksel renk paleti", "Otantik Kapadokya işçiliği"]
+      "amenities": [
+        "Oturma Alanı",
+        "Özel Banyo",
+        "Yağmur Duşu",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Mini Buzdolabı",
+        "Çalışma Masası",
+        "Türk Kilim Dokuması",
+        "Bornoz",
+        "İkram Meyve"
+      ],
+      "highlights": [
+        "Titizlikle restore edilmiş el oyması duvarlar",
+        "Geniş yaşam ve uyuma alanları",
+        "Uyumlu geleneksel renk paleti",
+        "Otantik Kapadokya işçiliği"
+      ]
     },
     "olive-cave": {
       "name": "Olive Cave",
       "tagline": "Samimi bir mağara deneyimi için tasarlanmış cesur ama sade bir atmosfer",
       "description": "Samimi bir deneyim yaşamanızı sağlayacak taze ama cesur bir atmosfer. Sadeliği, dokuları ve özel küçük detayları ile mükemmel bir denge içinde.",
-      "amenities": ["Özel Banyo", "Peri Işığı Ambiyansı", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Türk Seramikleri", "Kaliteli Nevresimler", "Saç Kurutma Makinesi", "Romantik yatak açma hizmeti"],
-      "highlights": ["Taze ve cesur iç mimari", "Samimi mağara atmosferi", "Özenli küçük zanaatkar detayları", "Romantik kaçamaklar için mükemmel"]
+      "amenities": [
+        "Özel Banyo",
+        "Peri Işığı Ambiyansı",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Türk Seramikleri",
+        "Kaliteli Nevresimler",
+        "Saç Kurutma Makinesi",
+        "Romantik yatak açma hizmeti"
+      ],
+      "highlights": [
+        "Taze ve cesur iç mimari",
+        "Samimi mağara atmosferi",
+        "Özenli küçük zanaatkar detayları",
+        "Romantik kaçamaklar için mükemmel"
+      ]
     },
     "black-stone-room-bathtub": {
       "name": "Black Stone Room with Bathtub",
       "tagline": "Şato esintili şık sığınağınıza özel bir tünelden geçin",
       "description": "Siyah Taş Oda, gerçek bir 'şato'da olduğunuzu hissettirecek bir tünelin sonunda yer almaktadır. Bu özgün şık odaya girerken aklınıza gelen ilk şey Aşktır.",
-      "amenities": ["Özel Küvet", "Özel Banyo", "Oturma Alanı", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Sarkıt Aydınlatma", "Çalışma Masası", "Mini Buzdolabı", "İkram Su", "Saç Kurutma Makinesi"],
-      "highlights": ["Eşsiz özel tünel girişi", "Sofistike 'şato' atmosferi", "Özel oda içi küvet", "Romantik kutlamalar için ideal"]
+      "amenities": [
+        "Özel Küvet",
+        "Özel Banyo",
+        "Oturma Alanı",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Sarkıt Aydınlatma",
+        "Çalışma Masası",
+        "Mini Buzdolabı",
+        "İkram Su",
+        "Saç Kurutma Makinesi"
+      ],
+      "highlights": [
+        "Eşsiz özel tünel girişi",
+        "Sofistike 'şato' atmosferi",
+        "Özel oda içi küvet",
+        "Romantik kutlamalar için ideal"
+      ]
     },
     "moon-cave": {
       "name": "Moon Cave",
       "tagline": "Otelin en derin kalbinde rüya gibi tonlar ve baştan çıkarıcı renkler",
       "description": "Sizi farklı bir dünyada hissettirmek için özenle korunmuş, kendine özgü karakteriyle tasarlandı. Rüya gibi zevki ve baştan çıkarıcı renkleriyle Sato Cave Hotel'in en derin kalbinde vakit geçirmek bir ayrıcalık olacak.",
-      "amenities": ["Özel Banyo", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Köy Manzarası", "Saç Kurutma Makinesi", "Havlu ve Nevresim", "Günlük Temizlik", "Vintage Mobilyalar"],
-      "highlights": ["Sürükleyici derin mağara deneyimi", "Baştan çıkarıcı ve benzersiz renk paleti", "Gözlerden uzak ve sessiz atmosfer", "Korunmuş tarihi karakter"]
+      "amenities": [
+        "Özel Banyo",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Köy Manzarası",
+        "Saç Kurutma Makinesi",
+        "Havlu ve Nevresim",
+        "Günlük Temizlik",
+        "Vintage Mobilyalar"
+      ],
+      "highlights": [
+        "Sürükleyici derin mağara deneyimi",
+        "Baştan çıkarıcı ve benzersiz renk paleti",
+        "Gözlerden uzak ve sessiz atmosfer",
+        "Korunmuş tarihi karakter"
+      ]
     },
     "amber-cave": {
       "name": "Amber Cave",
       "tagline": "Yüzyıllık tarihi dokunuşların zengin tekstil ürünleri ve özel konforla sentezi",
       "description": "Yüzyılların tarihine sahip bir mekanda toplanmış olan konforu ve ayrıcalığı sizlere sunmak için güzel tekstil mobilyalar ve geniş alanlar sağlayan, zengin dekorasyon ve geleneğin mükemmel sentezi.",
-      "amenities": ["Özel Banyo", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Çalışma Masası", "Köy Manzarası", "Esnek Yatak Düzeni", "Kilim Tekstili", "Günlük Temizlik"],
-      "highlights": ["Zengin geleneksel Türk dokumaları", "Yüzyıllık tarihi mekan", "Çok yönlü uyku düzenlemeleri", "Eşsiz konfor ve ayrıcalık"]
+      "amenities": [
+        "Özel Banyo",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Çalışma Masası",
+        "Köy Manzarası",
+        "Esnek Yatak Düzeni",
+        "Kilim Tekstili",
+        "Günlük Temizlik"
+      ],
+      "highlights": [
+        "Zengin geleneksel Türk dokumaları",
+        "Yüzyıllık tarihi mekan",
+        "Çok yönlü uyku düzenlemeleri",
+        "Eşsiz konfor ve ayrıcalık"
+      ]
     },
     "almond-cave-bathtub": {
       "name": "Almond Cave with Bathtub",
       "tagline": "Lüks bir özel jakuzi içeren ücra bir doğal sığınak",
       "description": "Sato'nun sahip olduğu en ücra mağaranın içinde bulunan jakuzide saatlerce dinlenmenizi sağlayan, size lüks ve mahremiyet sunan doğal bir sığınak.",
-      "amenities": ["Oda İçi Jakuzi/Küvet", "Özel Banyo", "Merkezi Isıtma", "Ücretsiz Wi-Fi", "Vadi Manzarası", "Bakır Aydınlatma", "Süslü Başlık", "Saç Kurutma Makinesi"],
-      "highlights": ["Özel kapalı jakuzili küvet", "Otelin en izole ve özel mağarası", "Çarpıcı vadi manzarası", "Otantik doğal taş sığınak"]
+      "amenities": [
+        "Oda İçi Jakuzi/Küvet",
+        "Özel Banyo",
+        "Merkezi Isıtma",
+        "Ücretsiz Wi-Fi",
+        "Vadi Manzarası",
+        "Bakır Aydınlatma",
+        "Süslü Başlık",
+        "Saç Kurutma Makinesi"
+      ],
+      "highlights": [
+        "Özel kapalı jakuzili küvet",
+        "Otelin en izole ve özel mağarası",
+        "Çarpıcı vadi manzarası",
+        "Otantik doğal taş sığınak"
+      ]
     }
   },
   "room_modal": {
