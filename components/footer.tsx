@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail } from "lucide-react"
+import { MapPin, Phone, Mail, Copy } from "lucide-react"
+import { FaInstagram, FaTripadvisor } from "react-icons/fa"
 
 export function Footer({ dict, lang }: { dict: any; lang: string }) {
   return (
@@ -55,42 +56,71 @@ export function Footer({ dict, lang }: { dict: any; lang: string }) {
             <h3 className="text-sm font-semibold tracking-wider uppercase">
               {dict.contact}
             </h3>
+
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2 text-sm text-primary-foreground/70">
+
+              <a
+                href="https://maps.app.goo.gl/EzbD57mNWvfBqnCN8"
+                target="_blank"
+                className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition"
+              >
                 <MapPin className="h-4 w-4 shrink-0" />
-                <span>Orta Mah, Konak Sk. No:7, 50180 Göreme/Nevşehir</span>
-              </div>
+                <span>Orta Mah, Konak Sk. No:9, 50180 Göreme/Nevşehir</span>
+              </a>
+
               <div className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Phone className="h-4 w-4 shrink-0" />
-                <span>+90 555 123 45 67</span>
+                <span>+90 546 500 87 75</span>
               </div>
+
               <div className="flex items-center gap-2 text-sm text-primary-foreground/70">
-                <Mail className="h-4 w-4 shrink-0" />
-                <span>satocavehotel@gmail.com</span>
+                <Phone className="h-4 w-4 shrink-0" />
+                <span>+90 554 205 00 08</span>
               </div>
+
+              {/* Email with hover + copy */}
+              <div className="group flex items-center gap-2 text-sm text-primary-foreground/70">
+                <Mail className="h-4 w-4 shrink-0" />
+
+                <a
+                  href="mailto:satocavehotel@gmail.com"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  satocavehotel@gmail.com
+                </a>
+
+                <button
+                  onClick={() => navigator.clipboard.writeText("satocavehotel@gmail.com")}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <Copy className="h-3.5 w-3.5" />
+                </button>
+              </div>
+
             </div>
           </div>
 
           <div className="flex flex-col gap-4">
             <h3 className="text-sm font-semibold tracking-wider uppercase">
-              {dict.newsletter}
+              Social
             </h3>
-            <p className="text-sm text-primary-foreground/70">
-              {dict.newsletter_desc}
-            </p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder={dict.placeholder}
-                className="flex-1 rounded-full border border-primary-foreground/20 bg-transparent px-4 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/40 focus:border-accent focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
+            <div className="flex gap-4">
+              <a
+                href="https://instagram.com/satocave"
+                target="_blank"
+                className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition"
               >
-                {dict.join}
-              </button>
-            </form>
+                <FaInstagram className="h-6 w-6" />
+              </a>
+              <a
+                href="https://www.tripadvisor.com.tr/Hotel_Review-g297983-d645745-Reviews-Sato_Cave_Hotel-Goreme_Cappadocia.html?m=19905"
+                target="_blank"
+                className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition"
+              >
+                <FaTripadvisor className="h-6 w-6" />
+              </a>
+            </div>
+
           </div>
         </div>
 

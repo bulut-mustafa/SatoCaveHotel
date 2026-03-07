@@ -10,7 +10,7 @@ export function HeroSection({ dict }: { dict: any }) {
       {/* FULL SCREEN BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/terrace-breakfast.jpg"
+          src="/images/cappadocia-hero-2.jpg"
           alt="Sato Cave Hotel Exterior"
           fill
           className="object-cover object-center"
@@ -24,7 +24,7 @@ export function HeroSection({ dict }: { dict: any }) {
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex-grow flex flex-col justify-center">
         <h1 className="font-sans text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-medium tracking-tight text-white mb-6 leading-[1.05] text-balance drop-shadow-lg">
           <span className="block">{dict.title_line_1}</span>
-          <span className="block">{dict.title_line_2_a} {dict.title_line_2_b}</span>
+          {/* <span className="block">{dict.title_line_2_a} {dict.title_line_2_b}</span> */}
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-white/95 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-md">
           {dict.description}

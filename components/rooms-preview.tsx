@@ -5,7 +5,7 @@ import type { Room } from "@/lib/rooms-data"
 
 export function RoomsPreview({ dict, lang, rooms }: { dict: any; lang: string; rooms: Room[] }) {
   // User requested to feature Room 5, Room 2, and Room 7 specifically
-  const featuredIds = ["black-stone-room-bathtub", "arena-stone-room-bathtub", "amber-cave"]
+  const featuredIds = ["black-stone-room-bathtub", "arena-stone-room-bathtub", "moon-cave"]
 
   // Filter for the requested IDs. If for some reason one isn't found, 
   // we could fallback to others, but we expect them to exist. 

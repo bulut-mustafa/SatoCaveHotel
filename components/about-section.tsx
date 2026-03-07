@@ -17,7 +17,7 @@ export function AboutSection({ dict }: { dict: any }) {
             <p className="mb-4 text-xs tracking-[0.3em] text-foreground/50 uppercase">
               {dict.subtitle}
             </p>
-            <h2 className="font-serif text-3xl font-bold leading-snug text-foreground md:text-4xl lg:text-5xl text-balance">
+            <h2 className="font-serif text-3xl font-bold leading-snug text-foreground md:text-3xl lg:text-4xl text-balance">
               {dict.title_part_1}
               <span className="text-foreground/70 italic">{dict.title_part_2}</span>
             </h2>
