@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache"
 import { kv } from "./kv"
 import { getLocalizedRooms } from "./rooms-data"
 import { getDictionary } from "./dictionary"
@@ -7,7 +8,7 @@ import type { RoomData, RoomContent, Activity, AboutContent, ContactInfo, FullRo
 
 export { getDefaultContact }
 
-export async function getRooms(lang: Locale): Promise<FullRoom[]> {
+async function _getRooms(lang: Locale): Promise<FullRoom[]> {
   const dict = await getDictionary(lang)
   const hardcoded = getLocalizedRooms(dict.room_details)
 
@@ -46,7 +47,13 @@ export async function getRooms(lang: Locale): Promise<FullRoom[]> {
   return rooms.filter(Boolean).filter((r) => !(r as any).hidden) as FullRoom[]
 }
 
-export async function getActivities(lang: Locale): Promise<Activity[]> {
+export const getRooms = unstable_cache(
+  _getRooms,
+  ["rooms"],
+  { tags: ["rooms"], revalidate: 3600 }
+)
+
+async function _getActivities(lang: Locale): Promise<Activity[]> {
   const fromKv = await kv.get<Activity[]>(`activities:${lang}`)
   if (fromKv) return fromKv
 
@@ -62,7 +69,13 @@ export async function getActivities(lang: Locale): Promise<Activity[]> {
   ]
 }
 
-export async function getAbout(lang: Locale): Promise<AboutContent> {
+export const getActivities = unstable_cache(
+  _getActivities,
+  ["activities"],
+  { tags: ["activities"], revalidate: 3600 }
+)
+
+async function _getAbout(lang: Locale): Promise<AboutContent> {
   const fromKv = await kv.get<AboutContent>(`about:${lang}`)
   if (fromKv) return fromKv
 
@@ -70,7 +83,13 @@ export async function getAbout(lang: Locale): Promise<AboutContent> {
   return dict.about as AboutContent
 }
 
-export async function getContact(): Promise<ContactInfo> {
+export const getAbout = unstable_cache(
+  _getAbout,
+  ["about"],
+  { tags: ["about"], revalidate: 3600 }
+)
+
+async function _getContact(): Promise<ContactInfo> {
   const fromKv = await kv.get<any>("contact")
   if (!fromKv) return getDefaultContact()
 
@@ -81,3 +100,9 @@ export async function getContact(): Promise<ContactInfo> {
 
   return fromKv as ContactInfo
 }
+
+export const getContact = unstable_cache(
+  _getContact,
+  ["contact"],
+  { tags: ["contact"], revalidate: 3600 }
+)

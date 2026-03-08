@@ -1,6 +1,6 @@
 "use server"
 
-import { revalidatePath } from "next/cache"
+import { revalidateTag } from "next/cache"
 import { kv } from "@/lib/kv"
 import { getLocalizedRooms } from "@/lib/rooms-data"
 import { getDictionary } from "@/lib/dictionary"
@@ -25,18 +25,12 @@ export async function updateRoom(
     kv.set(`rooms:content:tr:${id}`, trContent),
   ])
 
-  revalidatePath("/en", "page")
-  revalidatePath("/tr", "page")
-  revalidatePath("/en/rooms", "page")
-  revalidatePath("/tr/rooms", "page")
+  revalidateTag("rooms")
 }
 
 export async function reorderRooms(ids: string[]) {
   await kv.set("rooms:order", ids)
-  revalidatePath("/en", "page")
-  revalidatePath("/tr", "page")
-  revalidatePath("/en/rooms", "page")
-  revalidatePath("/tr/rooms", "page")
+  revalidateTag("rooms")
 }
 
 export async function deleteRoomImage(id: string, imageUrl: string) {
@@ -49,7 +43,7 @@ export async function deleteRoomImage(id: string, imageUrl: string) {
   }
 
   await kv.set(`rooms:data:${id}`, data)
-  revalidatePath(`/admin/rooms/${id}`)
+  revalidateTag("rooms")
 }
 
 export async function setRoomMainImage(id: string, imageUrl: string) {
@@ -58,7 +52,7 @@ export async function setRoomMainImage(id: string, imageUrl: string) {
 
   data.mainImage = imageUrl
   await kv.set(`rooms:data:${id}`, data)
-  revalidatePath(`/admin/rooms/${id}`)
+  revalidateTag("rooms")
 }
 
 export async function addRoomImage(id: string, imageUrl: string) {
@@ -69,7 +63,7 @@ export async function addRoomImage(id: string, imageUrl: string) {
   if (!data.mainImage) data.mainImage = imageUrl
 
   await kv.set(`rooms:data:${id}`, data)
-  revalidatePath(`/admin/rooms/${id}`)
+  revalidateTag("rooms")
 }
 
 export async function reorderRoomImages(id: string, images: string[]) {
@@ -78,7 +72,7 @@ export async function reorderRoomImages(id: string, images: string[]) {
 
   data.images = images
   await kv.set(`rooms:data:${id}`, data)
-  revalidatePath(`/admin/rooms/${id}`)
+  revalidateTag("rooms")
 }
 
 export async function toggleRoomVisibility(id: string, hidden: boolean) {
@@ -86,10 +80,7 @@ export async function toggleRoomVisibility(id: string, hidden: boolean) {
   if (!data) return
 
   await kv.set(`rooms:data:${id}`, { ...data, hidden })
-  revalidatePath("/en", "page")
-  revalidatePath("/tr", "page")
-  revalidatePath("/en/rooms", "page")
-  revalidatePath("/tr/rooms", "page")
+  revalidateTag("rooms")
 }
 
 export async function deleteRoom(id: string) {
@@ -102,11 +93,7 @@ export async function deleteRoom(id: string) {
     kv.del(`rooms:content:tr:${id}`),
   ])
 
-  revalidatePath("/admin/rooms")
-  revalidatePath("/en", "page")
-  revalidatePath("/tr", "page")
-  revalidatePath("/en/rooms", "page")
-  revalidatePath("/tr/rooms", "page")
+  revalidateTag("rooms")
 }
 
 export async function createRoom(
@@ -132,9 +119,7 @@ export async function createRoom(
     kv.set(`rooms:content:tr:${id}`, trContent),
   ])
 
-  revalidatePath("/admin/rooms")
-  revalidatePath("/en/rooms", "page")
-  revalidatePath("/tr/rooms", "page")
+  revalidateTag("rooms")
   return {}
 }
 
@@ -237,7 +222,10 @@ export async function initializeRoomsToKV() {
   // Seed contact
   await kv.set("contact", getDefaultContact())
 
-  revalidatePath("/", "layout")
+  revalidateTag("rooms")
+  revalidateTag("activities")
+  revalidateTag("about")
+  revalidateTag("contact")
 
   return { success: true }
 }

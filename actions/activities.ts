@@ -1,12 +1,12 @@
 "use server"
 
-import { revalidatePath } from "next/cache"
+import { revalidateTag } from "next/cache"
 import { kv } from "@/lib/kv"
 import type { Activity } from "@/types/content"
 
 export async function updateActivities(lang: "en" | "tr", activities: Activity[]) {
   await kv.set(`activities:${lang}`, activities)
-  revalidatePath(`/${lang}/activities`, "page")
+  revalidateTag("activities")
 }
 
 export async function updateActivity(
@@ -19,7 +19,7 @@ export async function updateActivity(
 
   const next = activities.map((a) => (a.id === id ? { ...a, ...updated } : a))
   await kv.set(`activities:${lang}`, next)
-  revalidatePath(`/${lang}/activities`, "page")
+  revalidateTag("activities")
 }
 
 export async function reorderActivities(lang: "en" | "tr", ids: string[]) {
@@ -31,5 +31,5 @@ export async function reorderActivities(lang: "en" | "tr", ids: string[]) {
     .filter(Boolean) as Activity[]
 
   await kv.set(`activities:${lang}`, sorted)
-  revalidatePath(`/${lang}/activities`, "page")
+  revalidateTag("activities")
 }
