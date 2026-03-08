@@ -18,6 +18,8 @@ export function Header({
   const pathname = usePathname()
 
   const isHome = pathname === `/${lang}` || pathname === `/`
+  const otherLang = lang === "tr" ? "en" : "tr"
+  const switchHref = `/${otherLang}${pathname.replace(`/${lang}`, "")}`
   const headerNeedsLightText = isHome && !isScrolled
 
   // Returns pill-active or pill-inactive classes for desktop nav
@@ -93,14 +95,14 @@ export function Header({
         {/* BOOKING / LANGUAGE / MOBILE (RIGHT) */}
         <div className="flex items-center gap-3 z-50">
           <Link
-            href={lang === "tr" ? "/en" : "/tr"}
+            href={switchHref}
             className={`hidden md:flex items-center justify-center rounded-full border h-10 w-10 text-xs font-semibold transition-colors duration-300 ${headerNeedsLightText
               ? "border-white/40 text-white hover:bg-white/20"
               : "border-border/60 text-foreground hover:bg-muted"
               }`}
             aria-label="Switch language"
           >
-            {lang === "tr" ? "EN" : "TR"}
+            {otherLang.toUpperCase()}
           </Link>
 
           {/* MOBILE TOGGLE */}
@@ -152,11 +154,11 @@ export function Header({
 
             <div className="mt-4 flex flex-col gap-3 border-t border-border pt-4">
               <Link
-                href={lang === "tr" ? "/en" : "/tr"}
+                href={switchHref}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center justify-center rounded-full border border-border/60 py-3 text-sm font-semibold text-foreground"
               >
-                Switch to {lang === "tr" ? "English" : "Türkçe"}
+                Switch to {otherLang === "tr" ? "Türkçe" : "English"}
               </Link>
             </div>
           </div>

@@ -3,41 +3,46 @@ import type { NextRequest } from "next/server"
 import { i18n } from "./i18n-config"
 import { match as matchLocale } from "@formatjs/intl-localematcher"
 import Negotiator from "negotiator"
+import { verifyToken, AUTH_COOKIE } from "./lib/auth"
 
-function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
+function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {}
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
-
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales
-
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages()
-
+  const locales: string[] = [...i18n.locales]
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
   try {
-    const locale = matchLocale(languages, locales, i18n.defaultLocale)
-    return locale
-  } catch (error) {
-    // Fallback if negotiator parses wildcards that formatjs doesn't like
+    return matchLocale(languages, locales, i18n.defaultLocale)
+  } catch {
     return i18n.defaultLocale
   }
 }
 
-export function proxy(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
+export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
 
-  // Check if there is any supported locale in the pathname
+  // 1. Allow API routes and login page through (skip auth + i18n)
+  if (pathname.startsWith("/api/") || pathname.startsWith("/admin/login")) {
+    return NextResponse.next()
+  }
+
+  // 2. Admin auth guard
+  if (pathname.startsWith("/admin")) {
+    const sessionToken = request.cookies.get(AUTH_COOKIE)?.value
+    const valid = sessionToken ? await verifyToken(sessionToken) : false
+    if (!valid) {
+      return NextResponse.redirect(new URL("/admin/login", request.url))
+    }
+    return NextResponse.next()
+  }
+
+  // 3. i18n locale detection/redirect
   const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    (locale) =>
+      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   )
 
-  // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request)
-
-    // e.g. incoming request is /rooms
-    // The new URL is now /en/rooms
     return NextResponse.redirect(
       new URL(
         `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
@@ -48,6 +53,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/`, `/api/`, `/images/`, `/fonts/`, etc.
-  matcher: ["/((?!api|_next/static|_next/image|images|videos|favicon.ico|Sato-logo.jpg|Sato-logo-transparent.png).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|images|videos|favicon.ico|Sato-logo.jpg|Sato-logo-transparent.png).*)",
+  ],
 }
