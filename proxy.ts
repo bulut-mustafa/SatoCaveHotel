@@ -20,6 +20,11 @@ function getLocale(request: NextRequest): string {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // ✅ Allow static files (Google verification, robots.txt, etc.)
+  if (pathname.includes(".")) {
+    return NextResponse.next()
+  }
+
   // 1. Allow API routes and login page through (skip auth + i18n)
   if (pathname.startsWith("/api/") || pathname.startsWith("/admin/login")) {
     return NextResponse.next()
