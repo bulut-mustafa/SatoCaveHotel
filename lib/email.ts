@@ -1,10 +1,23 @@
-import { Resend } from "resend"
+import nodemailer from "nodemailer"
 import type { Booking } from "@/types/booking"
 import { getContact } from "./content"
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
-const FROM = process.env.RESEND_FROM_EMAIL ?? "noreply@satocavehotel.com"
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? ""
+const GMAIL_USER = process.env.GMAIL_USER ?? ""
+const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD ?? ""
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? GMAIL_USER
+
+function createTransport() {
+  if (!GMAIL_USER || !GMAIL_APP_PASSWORD) return null
+  return nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: GMAIL_USER,
+      pass: GMAIL_APP_PASSWORD,
+    },
+  })
+}
 
 function formatDate(d: string) {
   return new Date(d + "T00:00:00").toLocaleDateString("en-GB", {
@@ -44,12 +57,18 @@ function bookingTable(b: Booking, whatsapp: string) {
 }
 
 async function send(to: string, subject: string, html: string) {
-  if (!resend) {
-    console.warn("[email] RESEND_API_KEY not set — skipping email to", to)
+  const transport = createTransport()
+  if (!transport) {
+    console.warn("[email] GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping email to", to)
     return
   }
   try {
-    await resend.emails.send({ from: FROM, to, subject, html })
+    await transport.sendMail({
+      from: `Sato Cave Hotel <${GMAIL_USER}>`,
+      to,
+      subject,
+      html,
+    })
   } catch (err) {
     console.error("[email] Failed to send:", err)
   }
