@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { BedDouble, MapPin, Info, Phone, LogOut, LayoutDashboard } from "lucide-react"
+import { BedDouble, MapPin, Info, Phone, LogOut, LayoutDashboard, CalendarCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/admin/rooms", label: "Rooms", icon: BedDouble },
+  { href: "/admin/bookings", label: "Bookings", icon: CalendarCheck },
   { href: "/admin/activities", label: "Activities", icon: MapPin },
   { href: "/admin/about", label: "About", icon: Info },
   { href: "/admin/contact", label: "Contact", icon: Phone },

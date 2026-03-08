@@ -27,13 +27,19 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Star, Trash2, GripVertical, Upload, CheckCircle2, X } from "lucide-react"
 import { updateRoom, deleteRoomImage, setRoomMainImage, addRoomImage, reorderRoomImages } from "@/actions/rooms"
+import { AvailabilityTab } from "./availability-tab"
+import { PricingTab } from "./pricing-tab"
 import type { RoomData, RoomContent } from "@/types/content"
+import type { RoomBlock, PriceOverride } from "@/types/booking"
 
 interface Props {
   id: string
   initialData: RoomData
   initialEnContent: RoomContent
   initialTrContent: RoomContent
+  blocks?: RoomBlock[]
+  priceOverrides?: PriceOverride[]
+  unavailableDates?: string[]
 }
 
 // ─── Sortable image item ───────────────────────────────────────────────────────
@@ -188,7 +194,7 @@ function TranslationForm({
 }
 
 // ─── Main editor ──────────────────────────────────────────────────────────────
-export function RoomEditorClient({ id, initialData, initialEnContent, initialTrContent }: Props) {
+export function RoomEditorClient({ id, initialData, initialEnContent, initialTrContent, blocks = [], priceOverrides = [], unavailableDates = [] }: Props) {
   const [data, setData] = useState<RoomData>(initialData)
   const [enContent, setEnContent] = useState<RoomContent>(initialEnContent)
   const [trContent, setTrContent] = useState<RoomContent>(initialTrContent)
@@ -266,6 +272,8 @@ export function RoomEditorClient({ id, initialData, initialEnContent, initialTrC
           <TabsTrigger value="details">Details</TabsTrigger>
           <TabsTrigger value="images">Images ({data.images.length})</TabsTrigger>
           <TabsTrigger value="translations">Translations</TabsTrigger>
+          <TabsTrigger value="pricing">Pricing</TabsTrigger>
+          <TabsTrigger value="availability">Availability</TabsTrigger>
         </TabsList>
 
         {/* ── Details tab ── */}
@@ -366,6 +374,24 @@ export function RoomEditorClient({ id, initialData, initialEnContent, initialTrC
             <TranslationForm lang="en" content={enContent} onChange={setEnContent} />
             <TranslationForm lang="tr" content={trContent} onChange={setTrContent} />
           </div>
+        </TabsContent>
+
+        {/* ── Pricing tab ── */}
+        <TabsContent value="pricing" className="pt-4">
+          <PricingTab
+            roomId={id}
+            basePrice={data.price}
+            priceOverrides={priceOverrides}
+          />
+        </TabsContent>
+
+        {/* ── Availability tab ── */}
+        <TabsContent value="availability" className="pt-4">
+          <AvailabilityTab
+            roomId={id}
+            blocks={blocks}
+            unavailableDates={unavailableDates}
+          />
         </TabsContent>
       </Tabs>
 

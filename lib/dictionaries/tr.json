@@ -331,5 +331,28 @@
     "details_button": "Detaylar",
     "book_activity": "Rezervasyon İste",
     "close": "Kapat"
+  },
+  "reserve": {
+    "page_title": "Oda Rezervasyonu",
+    "select_room": "Oda Seçin",
+    "check_in": "Giriş Tarihi",
+    "check_out": "Çıkış Tarihi",
+    "nights": "gece",
+    "per_night": "/ gece",
+    "total": "Toplam",
+    "guest_name": "Ad Soyad",
+    "email": "E-posta Adresi",
+    "phone": "Telefon / WhatsApp",
+    "num_guests": "Misafir Sayısı",
+    "special_requests": "Özel İstekler (isteğe bağlı)",
+    "submit": "Rezervasyon İste",
+    "success_title": "Rezervasyon Talebiniz Alındı",
+    "success_message": "Rezervasyonunuzu onaylamak için 24 saat içinde sizinle iletişime geçeceğiz.",
+    "unavailable_warning": "Bu tarihler müsait değil. Lütfen farklı tarihler seçin.",
+    "see_availability": "Müsaitliği Gör",
+    "book_now": "Şimdi Rezervasyon Yap",
+    "select_dates": "Tarihlerinizi seçin",
+    "price_per_night": "gecelik",
+    "availability_title": "Oda Müsaitliği"
   }
 }

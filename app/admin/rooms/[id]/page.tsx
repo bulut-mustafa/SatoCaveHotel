@@ -2,8 +2,10 @@ import { notFound } from "next/navigation"
 import { kv } from "@/lib/kv"
 import { getLocalizedRooms } from "@/lib/rooms-data"
 import { getDictionary } from "@/lib/dictionary"
+import { getBlocks, getPriceOverrides, getAvailabilityData } from "@/actions/availability"
 import type { RoomData, RoomContent } from "@/types/content"
 import { RoomEditorClient } from "./room-editor"
+import { toDateStr } from "@/lib/date-utils"
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -64,6 +66,15 @@ export default async function RoomDetailPage({ params }: PageProps) {
 
   if (!editorData) return notFound()
 
+  const today = toDateStr(new Date())
+  const inSixMonths = toDateStr(new Date(Date.now() + 180 * 86400000))
+
+  const [blocks, priceOverrides, availability] = await Promise.all([
+    getBlocks(id),
+    getPriceOverrides(id),
+    getAvailabilityData(id, today, inSixMonths, editorData.data.price),
+  ])
+
   return (
     <div className="p-8 max-w-5xl mx-auto">
       <div className="mb-6">
@@ -78,6 +89,9 @@ export default async function RoomDetailPage({ params }: PageProps) {
         initialData={editorData.data}
         initialEnContent={editorData.enContent}
         initialTrContent={editorData.trContent}
+        blocks={blocks}
+        priceOverrides={priceOverrides}
+        unavailableDates={availability.unavailable_dates}
       />
     </div>
   )
