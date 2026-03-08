@@ -1,7 +1,6 @@
 import { neon } from "@neondatabase/serverless"
 
 const connectionString = process.env.DATABASE_URL
-
 function createDb() {
   if (!connectionString) {
     // Graceful fallback: return a no-op proxy when DATABASE_URL is not set

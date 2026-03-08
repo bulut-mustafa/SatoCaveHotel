@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import type { Room } from "@/lib/rooms-data"
 import { RoomModal } from "@/components/room-modal"
-import { AvailabilityModal } from "@/components/booking/availability-modal"
 
 export function RoomsGrid({ dict, rooms, lang }: { dict: any; rooms: Room[]; lang: string }) {
     const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
@@ -57,18 +56,6 @@ export function RoomsGrid({ dict, rooms, lang }: { dict: any; rooms: Room[]; lan
                                                 >
                                                     {dict.rooms_page?.view_details || 'View Details'}
                                                 </button>
-
-                                                {r.see_availability && (
-                                                    <AvailabilityModal
-                                                        roomId={room.id}
-                                                        roomName={room.name}
-                                                        availabilityTitle={r.availability_title ?? "Room Availability"}
-                                                    >
-                                                        <button className="border border-foreground/30 hover:border-foreground text-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors">
-                                                            {r.see_availability}
-                                                        </button>
-                                                    </AvailabilityModal>
-                                                )}
 
                                                 {r.book_now && (
                                                     <Link

@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation"
+import Link from "next/link"
+import { ChevronLeft } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { getDictionary } from "@/lib/dictionary"
@@ -30,31 +32,20 @@ export default async function ReserveRoomPage({
   const today = toDateStr(new Date())
   const inThreeMonths = toDateStr(new Date(Date.now() + 90 * 86400000))
 
-  const availability = await getAvailabilityData(
-    roomId,
-    today,
-    inThreeMonths,
-    room.price
-  )
+  const availability = await getAvailabilityData(roomId, today, inThreeMonths, room.price)
 
   return (
     <main>
       <Header dict={dict.header} lang={lang} />
-
-      <section className="bg-background px-6 pt-32 pb-8 lg:px-8 border-b border-border">
-        <div className="mx-auto max-w-4xl py-12">
-          <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-3">
-            {dict.reserve.page_title}
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl text-foreground font-normal">
-            {room.name}
-          </h1>
-          <p className="mt-3 text-muted-foreground">{room.tagline}</p>
-        </div>
-      </section>
-
-      <section className="bg-background px-6 py-16 lg:px-8">
-        <div className="mx-auto max-w-4xl">
+      <div className="min-h-screen pt-16 bg-background">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <Link
+            href={`/${lang}/reserve`}
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Back to rooms
+          </Link>
           <ReservationClient
             room={room}
             availability={availability}
@@ -64,8 +55,7 @@ export default async function ReserveRoomPage({
             lang={lang}
           />
         </div>
-      </section>
-
+      </div>
       <Footer dict={dict.footer} lang={lang} contact={contact} />
     </main>
   )

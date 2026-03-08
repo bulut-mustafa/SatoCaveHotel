@@ -65,7 +65,7 @@ export function ActivitiesSection({ dict, lang }: { dict: any, lang: string }) {
                     />
 
                     {/* CENTER STACKED (Horseback & Green Tour) */}
-                    <div className="md:col-span-4 flex flex-col gap-4 md:gap-6">
+                    <div className="md:col-span-4 flex flex-col gap-4 md:gap-4">
                         <ActivityCard
                             activity={activities[1]}
                             className="flex-1 min-h-[250px] md:min-h-0"
@@ -175,7 +175,7 @@ function ActivityCard({
 
     return (
         <div
-            className={`group relative rounded-sm overflow-hidden shadow-lg cursor-pointer ${className}`}
+            className={`group relative rounded-xl overflow-hidden shadow-lg cursor-pointer ${className}`}
             onClick={onSelect}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

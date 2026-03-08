@@ -48,7 +48,7 @@ export function RoomsPreview({ dict, lang, rooms }: { dict: any; lang: string; r
               <Link
                 key={room.id}
                 href={`/${lang}/rooms`}
-                className="group relative flex flex-col overflow-hidden rounded-sm bg-card transition-all hover:shadow-2xl hover:-translate-y-1 aspect-[3/4]"
+                className="group relative flex flex-col overflow-hidden rounded-xl group bg-card transition-all hover:shadow-2xl hover:-translate-y-1 aspect-[3/4]"
               >
                 {/* BACKGROUND IMAGE */}
                 <Image
@@ -60,9 +60,9 @@ export function RoomsPreview({ dict, lang, rooms }: { dict: any; lang: string; r
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
 
                 {/* OVERLAY CONTENT */}
-                <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
+                <div className="absolute inset-0 p-4 flex flex-col justify-between z-10">
                   {/* TOP PILL */}
-                  <div className="self-start relative z-10 rounded-full border border-white/40 bg-black/20 backdrop-blur-md px-4 py-1.5 overflow-hidden">
+                  <div className="hidden group-hover:block self-start relative z-10 rounded-full border border-white/40 bg-black/20 backdrop-blur-md px-4 py-1.5 overflow-hidden">
                     <span className="relative z-10 text-xs font-medium tracking-wide text-white">
                       Detail
                     </span>

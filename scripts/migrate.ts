@@ -1,8 +1,10 @@
 import { neon } from "@neondatabase/serverless"
 import { readFileSync } from "fs"
 import { join } from "path"
+import 'dotenv/config'
 
 const DATABASE_URL = process.env.DATABASE_URL
+
 if (!DATABASE_URL) {
   console.error("DATABASE_URL environment variable is required")
   process.exit(1)

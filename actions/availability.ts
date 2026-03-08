@@ -11,44 +11,37 @@ export async function getAvailabilityData(
   basePrice: number
 ): Promise<AvailabilityData> {
   const [bookings, blocks, prices] = await Promise.all([
-    query<{ check_in: string; check_out: string }>(
-      `SELECT check_in::text, check_out::text FROM bookings
-       WHERE room_id = ${roomId}
-         AND status = 'accepted'
-         AND check_in < ${to}::date
-         AND check_out > ${from}::date`
-    ),
-    query<{ start_date: string; end_date: string }>(
-      `SELECT start_date::text, end_date::text FROM room_blocks
-       WHERE room_id = ${roomId}
-         AND start_date < ${to}::date
-         AND end_date > ${from}::date`
-    ),
-    query<{ date: string; price: string }>(
-      `SELECT date::text, price::text FROM room_prices
-       WHERE room_id = ${roomId}
-         AND date >= ${from}::date
-         AND date < ${to}::date`
-    ),
+    query<{ check_in: string; check_out: string }>`
+      SELECT check_in::text, check_out::text FROM bookings
+      WHERE room_id = ${roomId}
+        AND status = 'accepted'
+        AND check_in < ${to}::date
+        AND check_out > ${from}::date
+    `,
+    query<{ start_date: string; end_date: string }>`
+      SELECT start_date::text, end_date::text FROM room_blocks
+      WHERE room_id = ${roomId}
+        AND start_date < ${to}::date
+        AND end_date > ${from}::date
+    `,
+    query<{ date: string; price: string }>`
+      SELECT date::text, price::text FROM room_prices
+      WHERE room_id = ${roomId}
+        AND date >= ${from}::date
+        AND date < ${to}::date
+    `,
   ])
 
   const unavailableSet = new Set<string>()
-
   for (const b of bookings) {
-    for (const d of expandDateRange(b.check_in, b.check_out)) {
-      unavailableSet.add(d)
-    }
+    for (const d of expandDateRange(b.check_in, b.check_out)) unavailableSet.add(d)
   }
   for (const bl of blocks) {
-    for (const d of expandDateRange(bl.start_date, bl.end_date)) {
-      unavailableSet.add(d)
-    }
+    for (const d of expandDateRange(bl.start_date, bl.end_date)) unavailableSet.add(d)
   }
 
   const price_overrides: Record<string, number> = {}
-  for (const p of prices) {
-    price_overrides[p.date] = Number(p.price)
-  }
+  for (const p of prices) price_overrides[p.date] = Number(p.price)
 
   return {
     unavailable_dates: Array.from(unavailableSet).sort(),
@@ -58,40 +51,40 @@ export async function getAvailabilityData(
 }
 
 export async function addBlock(roomId: string, startDate: string, endDate: string, reason?: string) {
-  await query(
-    `INSERT INTO room_blocks (room_id, start_date, end_date, reason)
-     VALUES (${roomId}, ${startDate}::date, ${endDate}::date, ${reason ?? null})`
-  )
+  await query`
+    INSERT INTO room_blocks (room_id, start_date, end_date, reason)
+    VALUES (${roomId}, ${startDate}::date, ${endDate}::date, ${reason ?? null})
+  `
 }
 
 export async function removeBlock(blockId: string) {
-  await query(`DELETE FROM room_blocks WHERE id = ${blockId}::uuid`)
+  await query`DELETE FROM room_blocks WHERE id = ${blockId}::uuid`
 }
 
 export async function getBlocks(roomId: string): Promise<RoomBlock[]> {
-  return query<RoomBlock>(
-    `SELECT id, room_id, start_date::text, end_date::text, reason, created_at::text
-     FROM room_blocks WHERE room_id = ${roomId} ORDER BY start_date`
-  )
+  return query<RoomBlock>`
+    SELECT id, room_id, start_date::text, end_date::text, reason, created_at::text
+    FROM room_blocks WHERE room_id = ${roomId} ORDER BY start_date
+  `
 }
 
 export async function getPriceOverrides(roomId: string): Promise<PriceOverride[]> {
-  return query<PriceOverride>(
-    `SELECT id, room_id, date::text, price, created_at::text
-     FROM room_prices WHERE room_id = ${roomId} ORDER BY date`
-  )
+  return query<PriceOverride>`
+    SELECT id, room_id, date::text, price, created_at::text
+    FROM room_prices WHERE room_id = ${roomId} ORDER BY date
+  `
 }
 
 export async function setPriceOverride(roomId: string, date: string, price: number) {
-  await query(
-    `INSERT INTO room_prices (room_id, date, price)
-     VALUES (${roomId}, ${date}::date, ${price})
-     ON CONFLICT (room_id, date) DO UPDATE SET price = EXCLUDED.price`
-  )
+  await query`
+    INSERT INTO room_prices (room_id, date, price)
+    VALUES (${roomId}, ${date}::date, ${price})
+    ON CONFLICT (room_id, date) DO UPDATE SET price = EXCLUDED.price
+  `
 }
 
 export async function deletePriceOverride(roomId: string, date: string) {
-  await query(
-    `DELETE FROM room_prices WHERE room_id = ${roomId} AND date = ${date}::date`
-  )
+  await query`
+    DELETE FROM room_prices WHERE room_id = ${roomId} AND date = ${date}::date
+  `
 }
