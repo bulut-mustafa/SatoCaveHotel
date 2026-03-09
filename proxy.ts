@@ -47,7 +47,7 @@ export async function proxy(request: NextRequest) {
   )
 
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(request)
+    const locale = i18n.defaultLocale
     return NextResponse.redirect(
       new URL(
         `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,

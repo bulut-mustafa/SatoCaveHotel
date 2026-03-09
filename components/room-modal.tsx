@@ -174,7 +174,7 @@ export function RoomModal({
             {/* SPECS */}
             <div className="grid grid-cols-3 gap-3 rounded-xl bg-secondary/50 p-4">
               <div className="flex flex-col items-center text-center gap-1">
-                <Maximize2 className="h-4 w-4 text-accent/80" />
+                <Maximize2 className="h-4 w-4" />
                 <span className="text-[10px] uppercase font-bold text-muted-foreground">
                   {dict?.room_modal?.size || "Size"}
                 </span>
@@ -182,7 +182,7 @@ export function RoomModal({
               </div>
 
               <div className="flex flex-col items-center text-center gap-1 border-x border-border/50">
-                <Users className="h-4 w-4 text-accent/80" />
+                <Users className="h-4 w-4" />
                 <span className="text-[10px] uppercase font-bold text-muted-foreground">
                   {dict?.room_modal?.guests || "Guests"}
                 </span>
@@ -190,7 +190,7 @@ export function RoomModal({
               </div>
 
               <div className="flex flex-col items-center text-center gap-1">
-                <Bed className="h-4 w-4 text-accent/80" />
+                <Bed className="h-4 w-4" />
                 <span className="text-[10px] uppercase font-bold text-muted-foreground">
                   {dict?.room_modal?.bed || "Bed"}
                 </span>
@@ -219,7 +219,7 @@ export function RoomModal({
                     key={amenity}
                     className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] font-medium text-foreground"
                   >
-                    <Check className="h-3 w-3 text-accent" />
+                    <Check className="h-3 w-3" />
                     {amenity}
                   </span>
                 ))}

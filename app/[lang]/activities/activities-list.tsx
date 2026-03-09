@@ -90,7 +90,7 @@ function ActivityRow({
 
   return (
     <div
-      className="group flex flex-col md:flex-row gap-6 bg-card border border-border rounded-3xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+      className="group flex flex-col md:flex-row gap-6 bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
       onClick={onSelect}
     >
       <div

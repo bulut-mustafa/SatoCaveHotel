@@ -52,7 +52,7 @@ export default async function RoomsPage({
         </div>
       </section>
 
-      <RoomsGrid dict={dict} rooms={rooms} />
+      <RoomsGrid dict={dict} rooms={rooms} lang={lang} />
 
       <Footer dict={dict.footer} lang={lang} contact={contact} />
     </main>

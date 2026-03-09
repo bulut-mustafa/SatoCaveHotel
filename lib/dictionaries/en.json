@@ -330,5 +330,28 @@
     "details_button": "Details",
     "book_activity": "Request Booking",
     "close": "Close"
+  },
+  "reserve": {
+    "page_title": "Reserve a Room",
+    "select_room": "Select a Room",
+    "check_in": "Check-in",
+    "check_out": "Check-out",
+    "nights": "nights",
+    "per_night": "/ night",
+    "total": "Total",
+    "guest_name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone / WhatsApp",
+    "num_guests": "Number of Guests",
+    "special_requests": "Special Requests (optional)",
+    "submit": "Request Booking",
+    "success_title": "Booking Request Received",
+    "success_message": "We will contact you within 24 hours to confirm your reservation.",
+    "unavailable_warning": "These dates are not available. Please choose different dates.",
+    "see_availability": "See Availability",
+    "book_now": "Book Now",
+    "select_dates": "Select your dates",
+    "price_per_night": "per night",
+    "availability_title": "Room Availability"
   }
 }

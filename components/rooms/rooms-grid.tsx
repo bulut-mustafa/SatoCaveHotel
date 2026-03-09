@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import type { Room } from "@/lib/rooms-data"
 import { RoomModal } from "@/components/room-modal"
 
-export function RoomsGrid({ dict, rooms }: { dict: any; rooms: Room[] }) {
+export function RoomsGrid({ dict, rooms, lang }: { dict: any; rooms: Room[]; lang: string }) {
     const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
     const [modalOpen, setModalOpen] = useState(false)
 
@@ -13,6 +14,8 @@ export function RoomsGrid({ dict, rooms }: { dict: any; rooms: Room[] }) {
         setSelectedRoom(room)
         setModalOpen(true)
     }
+
+    const r = dict.reserve ?? {}
 
     return (
         <>
@@ -46,13 +49,22 @@ export function RoomsGrid({ dict, rooms }: { dict: any; rooms: Room[] }) {
                                                 {room.description}
                                             </p>
 
-                                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-8">
+                                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-8">
                                                 <button
                                                     onClick={() => openRoom(room)}
-                                                    className="bg-foreground hover:bg-foreground/80 text-background px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
+                                                    className="bg-foreground hover:bg-foreground/80 text-background px-6 py-3 text-sm font-medium tracking-wide transition-colors"
                                                 >
                                                     {dict.rooms_page?.view_details || 'View Details'}
                                                 </button>
+
+                                                {r.book_now && (
+                                                    <Link
+                                                        href={`/${lang}/reserve/${room.id}`}
+                                                        className="text-sm font-medium text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+                                                    >
+                                                        {r.book_now}
+                                                    </Link>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -65,6 +77,7 @@ export function RoomsGrid({ dict, rooms }: { dict: any; rooms: Room[] }) {
                                                 alt={room.name}
                                                 fill
                                                 className="object-cover transition-transform duration-700 hover:scale-105"
+                                                sizes="(max-width: 1024px) 100vw, 50vw"
                                             />
                                         </div>
                                     </div>
