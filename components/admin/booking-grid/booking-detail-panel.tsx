@@ -2,12 +2,12 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Check, XCircle } from "lucide-react"
+import { X, Check, XCircle, Ban } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
-import { acceptBooking, rejectBooking } from "@/actions/bookings"
+import { acceptBooking, rejectBooking, cancelBooking } from "@/actions/bookings"
 import type { Booking } from "@/types/booking"
 
 interface Props {
@@ -36,12 +36,14 @@ export function BookingDetailPanel({ booking, onClose, onUpdate }: Props) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const handle = async (action: "accept" | "reject") => {
+  const handle = async (action: "accept" | "reject" | "cancel") => {
     if (!booking) return
     setLoading(true)
     setError(null)
-    const fn = action === "accept" ? acceptBooking : rejectBooking
-    const result = await fn(booking.id, notes || undefined)
+    let result: { error?: string }
+    if (action === "accept") result = await acceptBooking(booking.id, notes || undefined)
+    else if (action === "reject") result = await rejectBooking(booking.id, notes || undefined)
+    else result = await cancelBooking(booking.id)
     setLoading(false)
     if (result.error) {
       setError(result.error)
@@ -171,6 +173,23 @@ export function BookingDetailPanel({ booking, onClose, onUpdate }: Props) {
                 >
                   <XCircle className="h-4 w-4 mr-1" />
                   Reject
+                </Button>
+              </div>
+            )}
+            {booking.status === "accepted" && (
+              <div className="p-4 border-t">
+                <Button
+                  variant="outline"
+                  className="w-full text-muted-foreground hover:text-destructive hover:border-destructive"
+                  onClick={() => {
+                    if (confirm("Cancel this booking? The guest will not be notified automatically.")) {
+                      handle("cancel")
+                    }
+                  }}
+                  disabled={loading}
+                >
+                  <Ban className="h-4 w-4 mr-2" />
+                  Cancel Booking
                 </Button>
               </div>
             )}

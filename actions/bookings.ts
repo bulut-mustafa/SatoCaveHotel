@@ -76,10 +76,10 @@ export async function getBookings(options?: {
            guest_phone, num_guests, special_requests, status, total_price,
            admin_notes, created_at::text, updated_at::text
     FROM bookings
-    WHERE (${options?.roomId ?? null} IS NULL OR room_id = ${options?.roomId ?? null})
-      AND (${options?.status ?? null} IS NULL OR status = ${options?.status ?? null})
-      AND (${options?.from ?? null} IS NULL OR check_out > ${options?.from ?? null}::date)
-      AND (${options?.to ?? null} IS NULL OR check_in < ${options?.to ?? null}::date)
+    WHERE (${options?.roomId ?? null}::text IS NULL OR room_id = ${options?.roomId ?? null}::text)
+      AND (${options?.status ?? null}::text IS NULL OR status = ${options?.status ?? null}::text)
+      AND (${options?.from ?? null}::date IS NULL OR check_out > ${options?.from ?? null}::date)
+      AND (${options?.to ?? null}::date IS NULL OR check_in < ${options?.to ?? null}::date)
     ORDER BY created_at DESC
   `
 }
@@ -131,4 +131,57 @@ export async function cancelBooking(id: string): Promise<{ error?: string }> {
   `
   if (!rows[0]) return { error: "Booking not found." }
   return {}
+}
+
+export async function getBookingStats(roomCount: number): Promise<{
+  pending_count: number
+  this_month_bookings: number
+  this_month_revenue: number
+  occupancy_pct: number
+}> {
+  const now = new Date()
+  const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+
+  const rows = await query<{
+    pending_count: string
+    this_month_count: string
+    this_month_revenue: string
+    accepted_nights: string
+  }>`
+    SELECT
+      COUNT(*) FILTER (WHERE status = 'pending') AS pending_count,
+      COUNT(*) FILTER (
+        WHERE status != 'cancelled'
+          AND check_in >= date_trunc('month', NOW())::date
+          AND check_in < (date_trunc('month', NOW()) + interval '1 month')::date
+      ) AS this_month_count,
+      COALESCE(SUM(total_price) FILTER (
+        WHERE status = 'accepted'
+          AND check_in >= date_trunc('month', NOW())::date
+          AND check_in < (date_trunc('month', NOW()) + interval '1 month')::date
+      ), 0) AS this_month_revenue,
+      COALESCE(SUM(
+        LEAST(check_out, (date_trunc('month', NOW()) + interval '1 month')::date) -
+        GREATEST(check_in, date_trunc('month', NOW())::date)
+      ) FILTER (
+        WHERE status = 'accepted'
+          AND check_out > date_trunc('month', NOW())::date
+          AND check_in < (date_trunc('month', NOW()) + interval '1 month')::date
+      ), 0) AS accepted_nights
+    FROM bookings
+  `
+
+  const row = rows[0]
+  const acceptedNights = Number(row?.accepted_nights ?? 0)
+  const totalPossibleNights = roomCount * daysInMonth
+  const occupancyPct = totalPossibleNights > 0
+    ? Math.round((acceptedNights / totalPossibleNights) * 100)
+    : 0
+
+  return {
+    pending_count: Number(row?.pending_count ?? 0),
+    this_month_bookings: Number(row?.this_month_count ?? 0),
+    this_month_revenue: Number(row?.this_month_revenue ?? 0),
+    occupancy_pct: occupancyPct,
+  }
 }

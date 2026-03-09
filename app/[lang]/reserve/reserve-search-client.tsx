@@ -149,10 +149,13 @@ function BookingPanel({
   const handleRangeSelect = (newRange: DateRange | undefined) => {
     setRange(newRange)
     setError(null)
-    if (newRange?.from && newRange?.to) {
+    const hasFullRange =
+      newRange?.from && newRange?.to &&
+      toDateStr(newRange.from) !== toDateStr(newRange.to)
+    if (hasFullRange) {
       if (
         availability &&
-        !checkAvailability(toDateStr(newRange.from), toDateStr(newRange.to), availability)
+        !checkAvailability(toDateStr(newRange.from!), toDateStr(newRange.to!), availability)
       ) {
         setError(r.unavailable_warning)
         setState("selecting")
@@ -519,7 +522,7 @@ export function ReserveSearchClient({
                     selected={range}
                     onSelect={(r) => {
                       setRange(r)
-                      if (r?.from && r?.to) setCalendarOpen(false)
+                      if (r?.from && r?.to && toDateStr(r.from) !== toDateStr(r.to)) setCalendarOpen(false)
                     }}
                     numberOfMonths={2}
                   />

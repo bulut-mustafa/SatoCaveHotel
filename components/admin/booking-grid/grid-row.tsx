@@ -1,6 +1,5 @@
 "use client"
 
-import { useRef } from "react"
 import { cn } from "@/lib/utils"
 import { BookingBar, BlockBar } from "./booking-bar"
 import type { Booking, RoomBlock } from "@/types/booking"
@@ -9,13 +8,20 @@ import { toDateStr } from "@/lib/date-utils"
 interface Props {
   roomId: string
   roomName: string
+  rowIdx: number
   dates: Date[]
   bookings: Booking[]
   blocks: RoomBlock[]
   cellWidth: number
+  // Selection state (computed by parent)
+  selectedDateStart: number | null  // inclusive col index
+  selectedDateEnd: number | null    // inclusive col index
+  isRowInSelection: boolean
+  isDragging: boolean
+  onCellMouseDown: (rowIdx: number, dateIdx: number) => void
+  onCellMouseEnter: (rowIdx: number, dateIdx: number) => void
   onBookingClick: (booking: Booking) => void
   onBlockClick: (block: RoomBlock) => void
-  onCellDrag: (roomId: string, startDate: string, endDate: string) => void
 }
 
 function dateIndex(dates: Date[], dateStr: string): number {
@@ -31,53 +37,63 @@ function clampSpan(start: number, end: number, total: number) {
 export function GridRow({
   roomId,
   roomName,
+  rowIdx,
   dates,
   bookings,
   blocks,
   cellWidth,
+  selectedDateStart,
+  selectedDateEnd,
+  isRowInSelection,
+  isDragging,
+  onCellMouseDown,
+  onCellMouseEnter,
   onBookingClick,
   onBlockClick,
-  onCellDrag,
 }: Props) {
-  const dragStart = useRef<number | null>(null)
   const today = toDateStr(new Date())
-
-  const handleMouseDown = (colIdx: number) => {
-    dragStart.current = colIdx
-  }
-
-  const handleMouseUp = (colIdx: number) => {
-    if (dragStart.current === null) return
-    const start = Math.min(dragStart.current, colIdx)
-    const end = Math.max(dragStart.current, colIdx)
-    const startDate = toDateStr(dates[start])
-    const endDate = toDateStr(new Date(dates[end].getTime() + 86400000)) // end is exclusive
-    dragStart.current = null
-    onCellDrag(roomId, startDate, endDate)
-  }
 
   return (
     <div className="flex border-b hover:bg-muted/20 transition-colors group">
-      <div className="w-60 shrink-0 px-4 py-3 border-r flex flex-col justify-center">
+      {/* Room label */}
+      <div className={cn(
+        "w-60 shrink-0 px-4 py-3 border-r flex flex-col justify-center transition-colors",
+        isRowInSelection && "bg-blue-50 dark:bg-blue-950/30"
+      )}>
         <span className="text-sm font-medium text-foreground truncate">{roomName}</span>
         <span className="text-xs text-muted-foreground">{roomId}</span>
       </div>
 
-      <div className="relative flex" style={{ height: 48 }}>
+      <div
+        className="relative flex"
+        style={{ height: 48 }}
+        onMouseLeave={() => {/* keep drag alive even if leaving row */}}
+      >
         {/* Empty cells */}
         {dates.map((date, idx) => {
           const dateStr = toDateStr(date)
           const isToday = dateStr === today
+          const isSelected = isRowInSelection &&
+            selectedDateStart !== null &&
+            selectedDateEnd !== null &&
+            idx >= selectedDateStart && idx <= selectedDateEnd
+
           return (
             <div
               key={dateStr}
               style={{ width: cellWidth, minWidth: cellWidth }}
               className={cn(
-                "shrink-0 border-r h-full cursor-pointer select-none",
-                isToday ? "bg-primary/5" : "hover:bg-accent/40",
+                "shrink-0 border-r h-full select-none transition-colors",
+                isSelected
+                  ? "bg-blue-200/70 dark:bg-blue-700/40 cursor-crosshair"
+                  : isToday
+                  ? "bg-primary/5"
+                  : isDragging
+                  ? "cursor-crosshair hover:bg-blue-100/50"
+                  : "cursor-crosshair hover:bg-accent/40",
               )}
-              onMouseDown={() => handleMouseDown(idx)}
-              onMouseUp={() => handleMouseUp(idx)}
+              onMouseDown={(e) => { e.preventDefault(); onCellMouseDown(rowIdx, idx) }}
+              onMouseEnter={() => { if (isDragging) onCellMouseEnter(rowIdx, idx) }}
             />
           )
         })}

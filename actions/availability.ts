@@ -88,3 +88,23 @@ export async function deletePriceOverride(roomId: string, date: string) {
     DELETE FROM room_prices WHERE room_id = ${roomId} AND date = ${date}::date
   `
 }
+
+export async function setRangePriceOverrides(roomId: string, startDate: string, endDate: string, price: number) {
+  const dates = expandDateRange(startDate, endDate)
+  for (const date of dates) {
+    await query`
+      INSERT INTO room_prices (room_id, date, price)
+      VALUES (${roomId}, ${date}::date, ${price})
+      ON CONFLICT (room_id, date) DO UPDATE SET price = EXCLUDED.price
+    `
+  }
+}
+
+export async function addBlockAllRooms(roomIds: string[], startDate: string, endDate: string, reason?: string) {
+  await Promise.all(
+    roomIds.map((roomId) => query`
+      INSERT INTO room_blocks (room_id, start_date, end_date, reason)
+      VALUES (${roomId}, ${startDate}::date, ${endDate}::date, ${reason ?? null})
+    `)
+  )
+}

@@ -1,4 +1,4 @@
-import { neon } from "@neondatabase/serverless"
+import { Client } from "@neondatabase/serverless"
 import { readFileSync } from "fs"
 import { join } from "path"
 import 'dotenv/config'
@@ -10,13 +10,13 @@ if (!DATABASE_URL) {
   process.exit(1)
 }
 
-const sql = neon(DATABASE_URL)
-
 async function migrate() {
+  const client = new Client(DATABASE_URL)
+  await client.connect()
+
   const schemaPath = join(process.cwd(), "lib", "db-schema.sql")
   const schema = readFileSync(schemaPath, "utf-8")
 
-  // Split on semicolons and run each statement
   const statements = schema
     .split(";")
     .map((s) => s.trim())
@@ -25,10 +25,11 @@ async function migrate() {
   console.log(`Running ${statements.length} migration statements...`)
 
   for (const stmt of statements) {
-    await sql.unsafe(stmt)
+    await client.query(stmt)
     console.log("✓", stmt.slice(0, 60).replace(/\s+/g, " "))
   }
 
+  await client.end()
   console.log("Migration complete!")
 }
 
