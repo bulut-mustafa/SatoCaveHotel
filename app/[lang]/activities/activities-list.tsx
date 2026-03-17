@@ -55,7 +55,6 @@ export function ActivitiesList({ activities, dict }: Props) {
                   <Button variant="outline" onClick={() => setSelected(null)}>
                     {dict.close}
                   </Button>
-                  <Button className="rounded-full">{dict.book_activity}</Button>
                 </div>
               </div>
             </div>

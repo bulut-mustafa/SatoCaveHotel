@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import type { Room } from "@/lib/rooms-data"
 import { RoomModal } from "@/components/room-modal"
 
@@ -14,8 +13,6 @@ export function RoomsGrid({ dict, rooms, lang }: { dict: any; rooms: Room[]; lan
         setSelectedRoom(room)
         setModalOpen(true)
     }
-
-    const r = dict.reserve ?? {}
 
     return (
         <>
@@ -57,14 +54,6 @@ export function RoomsGrid({ dict, rooms, lang }: { dict: any; rooms: Room[]; lan
                                                     {dict.rooms_page?.view_details || 'View Details'}
                                                 </button>
 
-                                                {r.book_now && (
-                                                    <Link
-                                                        href={`/${lang}/reserve/${room.id}`}
-                                                        className="text-sm font-medium text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-                                                    >
-                                                        {r.book_now}
-                                                    </Link>
-                                                )}
                                             </div>
                                         </div>
                                     </div>

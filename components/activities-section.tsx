@@ -123,9 +123,6 @@ export function ActivitiesSection({ dict, lang }: { dict: any, lang: string }) {
                                         <Button variant="outline" onClick={() => setSelectedActivity(null)}>
                                             {dict.close}
                                         </Button>
-                                        <Button className="rounded-full">
-                                            {dict.book_activity}
-                                        </Button>
                                     </div>
                                 </div>
                             </div>
